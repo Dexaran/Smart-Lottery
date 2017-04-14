@@ -20,8 +20,11 @@ Lottery developer will immediately receive 5% of round reward (0.05 * 9 = 0.45 E
 Remaining ETC (0.55) will be considered `bonus reward`.
 
 #### Round 2.
+
 Alice is depositing 2 ETC.
+
 Bob is depositing 8 ETC.
+
 Alice is depositing 10 ETC.
 
 Alice will have 60% chance to win 18 ETC and Bob will have 40% chance to win 18 ETC.
@@ -49,3 +52,10 @@ Lottery developer will receive 0.1 ETC;
 ### Description
 There is no way to claim back funds that are already deposited. May be this will be added later.
 Random number entropy source is block timestamp/ block difficulty.
+Lottery is firing events:
+ - `RoundEnd(uint roundNumber )` on each end of round with its number arg.
+ - `RoundEnd(uint roundNumber )` on each start of round with its number arg.
+ - `Deposit(address participant, uint _amount)` on deposit with address and amount args.
+ - `Winner(address winner, uint reward, uint RNGnumber)` when winner of round is calculated. Fired with address of winner, amount that is paid and random number that was generated args. This event is always fired in same time to `RoundEnd` event.
+ - `BonusReward(uint amount)` when winner is receiving additional `bonus reward`. Is fired in same time to `RoundEnd` and `Winner` events.
+
