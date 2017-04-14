@@ -50,6 +50,13 @@ Lottery developer will receive 0.1 ETC;
 `bonus reward` is now 0 ETC;
 
 ### Description
+
+The only thing users need to do to play lottery is to deposit Ether.
+
+Round is automatically started when deposit occurs. Users can deposit as much as they want during the round. If someone will deposit Ether after the end of the round (for example current round will end on block 3800000 but user is depositing on 3800001 block) previous round will be automatically ended, reward will be calculated and paid, next round will be started and users deposit will be the first deposit at the new round.
+
+There is also an `endRound()` function that allows to end round, calculate winner and pay reward with no new round start.
+
 There is no way to claim back funds that are already deposited. May be this will be added later.
 
 Random number entropy source is block timestamp/ block difficulty.
